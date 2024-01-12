@@ -1,5 +1,7 @@
 name: Azure Static Web Apps CI/CD
 
+name: Azure Static Web Apps CI/CD
+
 on:
   push:
     branches:
@@ -15,15 +17,15 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - name: Change Ownership of .git Directory
-        run: |
-          sudo chown -R $USER:$USER .git/
-          
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3 # Actualizado a v3
         with:
           submodules: true
-      - name:  Disable  CI  
-        run:  echo  "CI=false" >> $GITHUB_ENV
+
+      - name: Change Ownership of .git Directory
+        run: sudo chown -R $USER:$USER .git/
+
+      - name: Disable CI
+        run: echo "CI=false" >> $GITHUB_ENV
 
       - name: Build And Deploy
         id: builddeploy
