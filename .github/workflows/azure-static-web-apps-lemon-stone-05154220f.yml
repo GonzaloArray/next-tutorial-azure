@@ -22,8 +22,7 @@ jobs:
       - name: Change Ownership of .git Directory
         run: sudo chown -R $USER:$USER .git/
 
-      - name: Disable CI
-        run: echo "CI=false" >> $GITHUB_ENV
+      - run: echo "CI=false" >> $GITHUB_ENV
 
       - name: Build And Deploy
         id: builddeploy
